@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!-- Área do jogo com SurfaceView e placar sobreposto -->
-    <FrameLayout
+    <RelativeLayout
+        android:layout_above="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@android:color/holo_red_light">
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:padding="6dp">
 
         <SurfaceView
             android:id="@+id/surfaceView"
@@ -28,20 +27,20 @@
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:layout_gravity="top|center_horizontal"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"/>
-    </FrameLayout>
+    </RelativeLayout>
 
-    <!-- Controles da cobra -->
     <LinearLayout
-        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:background="@color/black">
+        android:background="@color/black"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottomBar">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/topBtn"
@@ -52,9 +51,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/leftBtn"
@@ -65,13 +64,12 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/rightBtn"
+                android:layout_marginStart="80dp"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="80dp"
                 android:background="@android:color/holo_blue_light"
                 android:src="@drawable/setinha_direita"/>
         </LinearLayout>
-
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/bottomBtn"
             android:layout_width="80dp"
@@ -80,4 +78,4 @@
             android:src="@drawable/setinha_baixo"/>
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

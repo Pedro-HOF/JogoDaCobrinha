@@ -131,11 +131,15 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
 
-        //quando superficie eh criado  e ganha um surfaceHolder dele e da pro surfaceHolder
         this.surfaceHolder = surfaceHolder;
 
-        //comeca os dados da cobra / surfaceview
-        init();
+        // Aguarda o layout terminar para garantir que a largura/altura da surfaceView seja válida
+        surfaceView.post(new Runnable() {
+            @Override
+            public void run() {
+                init();
+            }
+        });
     }
 
     @Override
