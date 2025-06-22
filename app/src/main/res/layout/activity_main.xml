@@ -7,30 +7,34 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Parte superior com o jogo -->
     <RelativeLayout
         android:layout_above="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@android:color/holo_red_light"
         android:padding="6dp">
 
+        <!-- TextView do placar -->
+        <TextView
+            android:id="@+id/scoreTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+        <!-- SurfaceView (agora por último, para ficar no fundo) -->
         <SurfaceView
             android:id="@+id/surfaceView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-    <TextView
-        android:id="@+id/scoreTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"/>
     </RelativeLayout>
 
+    <!-- Botões de controle na parte de baixo -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +51,7 @@
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:background="@android:color/holo_blue_light"
-            android:src="@drawable/setinha_cima"/>
+            android:src="@drawable/setinha_cima" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,7 +64,7 @@
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:background="@android:color/holo_blue_light"
-                android:src="@drawable/setinha_esquerda"/>
+                android:src="@drawable/setinha_esquerda" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/rightBtn"
@@ -68,14 +72,15 @@
                 android:layout_width="80dp"
                 android:layout_height="50dp"
                 android:background="@android:color/holo_blue_light"
-                android:src="@drawable/setinha_direita"/>
+                android:src="@drawable/setinha_direita" />
         </LinearLayout>
+
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/bottomBtn"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:background="@android:color/holo_blue_light"
-            android:src="@drawable/setinha_baixo"/>
+            android:src="@drawable/setinha_baixo" />
     </LinearLayout>
 
 </RelativeLayout>
