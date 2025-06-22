@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     private static final int snakeMovingSpeed = 800;
 
     //coordenadas da posicao aleatoria do ponto na surfaceView
-    private int positionX, positionY;
+    private int positionX = 0, positionY = 0;
 
     //timer para mover a cobra / mudar a posicao da cobra depois de um tempos especifico (snakeMovingSpeed)
     private Timer timer;
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 //Verifica se a posicao anterior do movimento nao e para baixo
                 //Por exemplo se a cobra se move para baixo entao a combra nao pode se mover diretamente para cima
                 //A cobra deve pegar o caminho da direita ou esquerda antes aí para cima
-                if(movingPosition.equals("bottom")){
+                if(!movingPosition.equals("bottom")){
                     movingPosition = "top";
                 }
             }
@@ -131,24 +131,21 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     @Override
     public void surfaceCreated(@NonNull SurfaceHolder surfaceHolder) {
 
+        //quando criada pega o surfaceHolder da pro surfaceHolder
         this.surfaceHolder = surfaceHolder;
 
-        // Aguarda o layout terminar para garantir que a largura/altura da surfaceView seja válida
-        surfaceView.post(new Runnable() {
-            @Override
-            public void run() {
-                init();
-            }
-        });
-    }
-
-    @Override
-    public void surfaceChanged(@NonNull SurfaceHolder holder, int format, int width, int height) {
+        // comeca os dados da cobra / surfaceView
+        init();
 
     }
 
     @Override
-    public void surfaceDestroyed(@NonNull SurfaceHolder holder) {
+    public void surfaceChanged(@NonNull SurfaceHolder surfaceHolder, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void surfaceDestroyed(@NonNull SurfaceHolder surfaceHolder) {
 
     }
 
@@ -173,8 +170,8 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         for(int i = 0; i < defaultTalePoints; i++){
 
             //adicionando pontos para tale da cobra
-            SnakePoints snakePoint = new SnakePoints(startPositionX, pointSize);
-            snakePointsList.add(snakePoint);
+            SnakePoints snakePoints = new SnakePoints(startPositionX, pointSize);
+            snakePointsList.add(snakePoints);
 
             //valor sendo aumentado para o proximo ponto da cobra
             startPositionX = startPositionX - (pointSize * 2);
